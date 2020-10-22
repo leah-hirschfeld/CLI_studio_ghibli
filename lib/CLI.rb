@@ -24,19 +24,21 @@ class CLI
   end
 
   def list_films
-    user_input = gets.strip.downcase
-    puts "\n"
+    user_input = gets.strip.downcase
+    puts "\n"
 
-    if user_input == "movies" || user_input == "movie" || user_input == "film" || user_input == "films"
-      puts "Great choice! Here are the Studio Ghibli movies!"
-      puts "\n"
-      display_list_of_films
-  end
+    if user_input == "movies"||user_input == "movie"||user_input == "films"||user_input == "film"
+      puts "Great choice! Here are the Studio Ghibli movies!"
+      puts "\n"
+      display_list_of_films
+    end
+  end
 
   def display_list_of_films
-    Film.all.each_with_index do |film, index| #make alphabetical order
-      puts "#{index + 1}. #{film.title}"
-    end
+    Film.all.each_with_index do |film, index|
+      puts "#{index + 1}. #{film.title}"
+    end
   end
+
 
 end
