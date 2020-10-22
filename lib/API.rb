@@ -21,8 +21,6 @@ class API
       film.release_date = film_hash["release_date"]
       film.description = film_hash["description"]
       film.rt_score = film_hash["rt_score"]
-
-      puts "#{counter} #{film.title}"
     end
 
   end

@@ -20,6 +20,23 @@ class CLI
     sleep(3)
 
     API.fetch_films
+    self.list_films
+  end
+
+  def list_films
+    user_input = gets.strip.downcase
+    puts "\n"
+
+    if user_input == "movies" || user_input == "movie" || user_input == "film" || user_input == "films"
+      puts "Great choice! Here are the Studio Ghibli movies!"
+      puts "\n"
+      display_list_of_films
+  end
+
+  def display_list_of_films
+    Film.all.each_with_index do |film, index| #make alphabetical order
+      puts "#{index + 1}. #{film.title}"
+    end
   end
 
 end
