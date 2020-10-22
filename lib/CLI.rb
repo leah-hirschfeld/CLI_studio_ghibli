@@ -32,6 +32,24 @@ class CLI
       puts "\n"
       display_list_of_films
     end
+
+    if user_input == "director"||user_input == "directors"
+      puts "Excellent! Here are the Studio Ghibli directors!"
+      puts "\n"
+      display_list_of_directors
+    end
+
+    if user_input == "year"||user_input == "years"
+      puts "Absolutely! Here are the movies by release date!"
+      puts "\n"
+      display_list_of_years
+    end
+
+    if user_input == "scores"||user_input == "score"
+      puts "Of course! Here are the rotten tomato Scores!"
+      puts "\n"
+      display_list_of_rt_scores
+    end
   end
 
   def display_list_of_films
@@ -40,5 +58,22 @@ class CLI
     end
   end
 
+  def display_list_of_directors
+    Film.all.each_with_index do |film, index|
+      puts "#{index + 1}. #{film.director}"
+    end
+  end
+
+  def display_list_of_years
+    Film.all.each_with_index do |film, index|
+      puts "#{index + 1}. #{film.title}, Release Date: #{film.release_date}"
+    end
+  end
+
+  def display_list_of_rt_scores
+    Film.all.each_with_index do |film, index|
+      puts "#{index + 1}. #{film.title}, Rotten Tomato Score: #{film.rt_score}"
+    end
+  end
 
 end
