@@ -10,19 +10,16 @@ class API
     response = Net::HTTP.get(uri)
     array = JSON.parse(response)
 
-
     array.each do |film_hash|
       film = Film.new
       film.title = film_hash["title"]
+      film.director = film_hash["director"]
+      film.producer = film_hash["producer"]
+      film.release_date = film_hash["release_date"]
+      film.description = film_hash["description"]
+      film.rt_score = film_hash["rt_score"]
     end
 
   end
 
 end
-
-#array[#]["title"] = title of the film
-#array[#]["director"] = director
-#array[#]["producer"] = producer
-#array[#]["release_date"] = year
-#array[#]["description"] = description
-#array[#]["rt_score"] = rotten tomato score; show by list?
