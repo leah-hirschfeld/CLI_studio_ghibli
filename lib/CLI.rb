@@ -5,10 +5,10 @@ class CLI
   end
 
   def start
-    puts "Welcome to the World of Studio Ghibli! What would you like to learn more about?"
+    puts "Welcome to the World of Studio Ghibli!"
     puts "\n"
 
-    sleep(2)
+    sleep(1)
 
     puts "  To see a list of Studio Ghibli movies, put 'Movies'."
     puts "  To see a list of Studio Ghibli directors, put 'Directors'."
@@ -18,13 +18,12 @@ class CLI
 
     puts "\n"
 
-    sleep(3)
-
     API.fetch_films
     self.list_films
   end
 
   def list_films
+    puts "What would you like to see? Please put movie, year, director or score."
     puts "\n"
     user_input = gets.strip.downcase
 
@@ -34,10 +33,7 @@ class CLI
       display_list_of_films
       ask_user_for_film_choice_by_title(@sorted_array_by_title)
       puts "\n"
-      puts "Would you like to see anything else? Please put movie, year, director or score."
       list_films
-      puts "\n"
-      puts "Thanks for stopping by!"
     end
 
     if user_input == "director"||user_input == "directors"
@@ -45,10 +41,7 @@ class CLI
       puts "\n"
       display_list_of_directors
       puts "\n"
-      puts "Would you like to see anything else? Please put movie, year, director or score."
       list_films
-      puts "\n"
-      puts "Thanks for stopping by!"
     end
 
     if user_input == "year"||user_input == "years"
@@ -57,10 +50,7 @@ class CLI
       display_list_of_years
       ask_user_for_film_choice_by_year(@sorted_array_by_years)
       puts "\n"
-      puts "Would you like to see anything else? Please put movie, year, director or score."
       list_films
-      puts "\n"
-      puts "Thanks for stopping by!"
     end
 
     if user_input == "scores"||user_input == "score"
@@ -69,9 +59,10 @@ class CLI
       display_list_of_rt_scores
       ask_user_for_film_choice_rt_score(@sorted_array_by_rt_score)
       puts "\n"
-      puts "Would you like to see anything else? Please put movie, year, director or score."
       list_films
-      puts "\n"
+    end
+
+    else
       puts "Thanks for stopping by!"
     end
 
