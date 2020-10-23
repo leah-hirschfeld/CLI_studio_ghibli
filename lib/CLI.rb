@@ -34,34 +34,26 @@ class CLI
       ask_user_for_film_choice_by_title(@sorted_array_by_title)
       puts "\n"
       list_films
-    end
-
-    if user_input == "director"||user_input == "directors"
+    elsif user_input == "director"||user_input == "directors"
       puts "Excellent! Here are the Studio Ghibli directors!"
       puts "\n"
       display_list_of_directors
       puts "\n"
       list_films
-    end
-
-    if user_input == "year"||user_input == "years"
+    elsif user_input == "year"||user_input == "years"
       puts "Absolutely! Here are the movies by release date!"
       puts "\n"
       display_list_of_years
       ask_user_for_film_choice_by_year(@sorted_array_by_years)
       puts "\n"
       list_films
-    end
-
-    if user_input == "scores"||user_input == "score"
+    elsif user_input == "scores"||user_input == "score"
       puts "Of course! Here are the rotten tomato scores!"
       puts "\n"
       display_list_of_rt_scores
       ask_user_for_film_choice_rt_score(@sorted_array_by_rt_score)
       puts "\n"
       list_films
-    end
-
     else
       puts "Thanks for stopping by!"
     end
