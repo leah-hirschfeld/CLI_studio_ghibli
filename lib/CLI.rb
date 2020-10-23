@@ -32,7 +32,7 @@ class CLI
       puts "Great choice! Here are the Studio Ghibli movies!"
       puts "\n"
       display_list_of_films
-      ask_user_for_film_choice(@sorted_array_by_title)
+      ask_user_for_film_choice_by_title(@sorted_array_by_title)
     end
 
     if user_input == "director"||user_input == "directors"
@@ -45,12 +45,14 @@ class CLI
       puts "Absolutely! Here are the movies by release date!"
       puts "\n"
       display_list_of_years
+      ask_user_for_film_choice_by_year(@sorted_array_by_years)
     end
 
     if user_input == "scores"||user_input == "score"
       puts "Of course! Here are the rotten tomato scores!"
       puts "\n"
       display_list_of_rt_scores
+      ask_user_for_film_choice_rt_score(@sorted_array_by_rt_score)
     end
   end
 
@@ -68,20 +70,20 @@ class CLI
   end
 
   def display_list_of_years
-    sorted_array_by_years = Film.all.sort_by {|film| film.release_date.to_i}
-    sorted_array_by_years.each_with_index do |film, index|
+    @sorted_array_by_years = Film.all.sort_by {|film| film.release_date.to_i}
+    @sorted_array_by_years.each_with_index do |film, index|
       puts "#{index + 1}. #{film.title}, Release Date: #{film.release_date}"
     end
   end
 
   def display_list_of_rt_scores
-    sorted_array_by_rt_score = Film.all.sort_by {|film| film.rt_score.to_i}
-    sorted_array_by_rt_score.each_with_index do |film, index|
+    @sorted_array_by_rt_score = Film.all.sort_by {|film| film.rt_score.to_i}
+    @sorted_array_by_rt_score.each_with_index do |film, index|
       puts "#{index + 1}. #{film.title}, Rotten Tomato Score: #{film.rt_score}"
       end
   end
 
-  def ask_user_for_film_choice(array)
+  def ask_user_for_film_choice_by_title(array)
     puts "\n"
     puts "Enter the number of the film you'd like to learn more about!"
     user_input_as_index = gets.strip.to_i - 1
@@ -98,6 +100,62 @@ class CLI
   end
 
   def display_film_details(film)
+    puts "\n"
+    puts film.title
+    puts "\n"
+    puts "Description: " + film.description
+    puts "\n"
+    puts "Director: " + film.director
+    puts "Producer: " + film.producer
+    puts "Release Date: " + film.release_date
+    puts "Rotten Tomato Score: " + film.rt_score
+  end
+
+  def ask_user_for_film_choice_rt_score(array)
+    puts "\n"
+    puts "Enter the number of the film you'd like to learn more about!"
+    user_input_as_index = gets.strip.to_i - 1
+
+    until user_input_as_index.between?(0, Film.all.length)
+      puts "Whoops! That didn't work. Choose a valid number please."
+      puts "\n"
+      user_input_as_index = gets.strip.to_i - 1
+    end
+
+    film_instance = @sorted_array_by_rt_score[user_input_as_index]
+
+    display_film_details(film_instance)
+  end
+
+  def display_rt_scores_details(film)
+    puts "\n"
+    puts film.title
+    puts "\n"
+    puts "Description: " + film.description
+    puts "\n"
+    puts "Director: " + film.director
+    puts "Producer: " + film.producer
+    puts "Release Date: " + film.release_date
+    puts "Rotten Tomato Score: " + film.rt_score
+  end
+
+  def ask_user_for_film_choice_by_year(array)
+    puts "\n"
+    puts "Enter the number of the film you'd like to learn more about!"
+    user_input_as_index = gets.strip.to_i - 1
+
+    until user_input_as_index.between?(0, Film.all.length)
+      puts "Whoops! That didn't work. Choose a valid number please."
+      puts "\n"
+      user_input_as_index = gets.strip.to_i - 1
+    end
+
+    film_instance = @sorted_array_by_years[user_input_as_index]
+
+    display_film_details(film_instance)
+  end
+
+  def display_film_by_year_details(film)
     puts "\n"
     puts film.title
     puts "\n"
