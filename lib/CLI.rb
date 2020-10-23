@@ -60,7 +60,9 @@ class CLI
       puts "\n"
     elsif user_input == "exit"
     else
-      puts "input not recognized"
+      puts "\n"
+      puts "Whoops! That didn't work. Please input a valid entry."
+      puts "\n"
     end
     user_input
   end
