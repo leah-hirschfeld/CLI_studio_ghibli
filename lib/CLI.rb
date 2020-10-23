@@ -1,3 +1,4 @@
+require 'pry'
 class CLI
 
   def initialize
@@ -46,21 +47,22 @@ class CLI
     end
 
     if user_input == "scores"||user_input == "score"
-      puts "Of course! Here are the rotten tomato Scores!"
+      puts "Of course! Here are the rotten tomato scores!"
       puts "\n"
       display_list_of_rt_scores
     end
   end
 
   def display_list_of_films
-    Film.all.each_with_index do |film, index|
+    sorted_array_by_title = Film.all.sort_by {|film| film.title}
+    sorted_array_by_title.each_with_index do |film, index|
       puts "#{index + 1}. #{film.title}"
     end
   end
 
   def display_list_of_directors
     Film.all.each_with_index do |film, index|
-      puts "#{index + 1}. #{film.director}"
+      puts "#{index + 1}. #{film.title}, Film Director: #{film.director}"
     end
   end
 
@@ -71,9 +73,12 @@ class CLI
   end
 
   def display_list_of_rt_scores
-    Film.all.each_with_index do |film, index|
+    sorted_array_by_rt_score = Film.all.sort_by {|film| film.title}
+    sorted_array_by_rt_score.each_with_index do |film, index|
       puts "#{index + 1}. #{film.title}, Rotten Tomato Score: #{film.rt_score}"
-    end
+      #Film.all.sort_by {|film| film.rt_score}
+      #puts "#{index + 1}. #{film.title}, Rotten Tomato Score: #{film.rt_score}"
+      end
   end
 
 end
