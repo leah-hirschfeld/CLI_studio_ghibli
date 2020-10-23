@@ -74,7 +74,7 @@ class CLI
   end
 
   def display_list_of_rt_scores
-    sorted_array_by_rt_score = Film.all.sort_by {|film| film.rt_score}
+    sorted_array_by_rt_score = Film.all.sort_by {|film| film.rt_score.to_i}
     sorted_array_by_rt_score.each_with_index do |film, index|
       puts "#{index + 1}. #{film.title}, Rotten Tomato Score: #{film.rt_score}"
       end
