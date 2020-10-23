@@ -61,6 +61,7 @@ class CLI
     else
       puts "Thanks for stopping by!"
     end
+    end
 
   end
 
