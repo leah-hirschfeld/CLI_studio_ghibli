@@ -28,10 +28,11 @@ class CLI
     user_input = gets.strip.downcase
     puts "\n"
 
-    if user_input == "movies"||user_input == "movie"||user_input == "films"||user_input == "film"
+    if user_input == "movies"||user_input == "movie"
       puts "Great choice! Here are the Studio Ghibli movies!"
       puts "\n"
       display_list_of_films
+      ask_user_for_film_choice
     end
 
     if user_input == "director"||user_input == "directors"
@@ -78,6 +79,26 @@ class CLI
     sorted_array_by_rt_score.each_with_index do |film, index|
       puts "#{index + 1}. #{film.title}, Rotten Tomato Score: #{film.rt_score}"
       end
+  end
+
+  def ask_user_for_film_choice
+    puts "\n"
+    puts "Enter the number of the film you'd like to learn more about!"
+    user_input_as_index = gets.strip.to_i - 1
+
+    until user_input_as_index.between?(0, Film.all.length - 1)
+      puts "Whoops! That didn't work. Choose a valid number please."
+      puts "\n"
+      user_input_as_index = gets.strip.to_i - 1
+    end
+
+    film_instance = Film.all[user_input_as_index]
+
+    display_film_details
+  end
+
+  def display_film_details(film)
+    
   end
 
 end
