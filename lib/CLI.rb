@@ -67,7 +67,9 @@ class CLI
   end
 
   def display_list_of_years
-    Film.all.each_with_index do |film, index|
+    sorted_array_by_years = Film.all.sort_by {|film| film.release_date}
+    #Film.all.each_with_index do |film, index|
+    sorted_array_by_years.each_with_index do |film, index|
       puts "#{index + 1}. #{film.title}, Release Date: #{film.release_date}"
     end
   end
