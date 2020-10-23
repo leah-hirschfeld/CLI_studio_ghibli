@@ -18,9 +18,9 @@ class API
       film.title = film_hash["title"]
       film.director = film_hash["director"]
       film.producer = film_hash["producer"]
-      film.release_date = film_hash["release_date"].to_i
+      film.release_date = film_hash["release_date"]
       film.description = film_hash["description"]
-      film.rt_score = film_hash["rt_score"].to_i
+      film.rt_score = film_hash["rt_score"]
     end
 
   end
