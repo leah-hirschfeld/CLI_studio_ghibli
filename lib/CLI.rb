@@ -32,7 +32,7 @@ class CLI
       puts "Great choice! Here are the Studio Ghibli movies!"
       puts "\n"
       display_list_of_films
-      ask_user_for_film_choice(sorted_array_by_title)
+      ask_user_for_film_choice(@sorted_array_by_title)
     end
 
     if user_input == "director"||user_input == "directors"
@@ -55,8 +55,8 @@ class CLI
   end
 
   def display_list_of_films
-    sorted_array_by_title = Film.all.sort_by {|film| film.title}
-    sorted_array_by_title.each_with_index do |film, index|
+    @sorted_array_by_title = Film.all.sort_by {|film| film.title}
+    @sorted_array_by_title.each_with_index do |film, index|
       puts "#{index + 1}. #{film.title}"
     end
   end
@@ -81,7 +81,7 @@ class CLI
       end
   end
 
-  def ask_user_for_film_choice
+  def ask_user_for_film_choice(array)
     puts "\n"
     puts "Enter the number of the film you'd like to learn more about!"
     user_input_as_index = gets.strip.to_i - 1
@@ -92,7 +92,7 @@ class CLI
       user_input_as_index = gets.strip.to_i - 1
     end
 
-    film_instance = Film.all[user_input_as_index]
+    film_instance = @sorted_array_by_title[user_input_as_index]
 
     display_film_details(film_instance)
   end
@@ -100,7 +100,9 @@ class CLI
   def display_film_details(film)
     puts "\n"
     puts film.title
+    puts "\n"
     puts "Description: " + film.description
+    puts "\n"
     puts "Director: " + film.director
     puts "Producer: " + film.producer
     puts "Release Date: " + film.release_date
