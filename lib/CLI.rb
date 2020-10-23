@@ -25,6 +25,7 @@ class CLI
   end
 
   def list_films
+    puts "What would you like to see? Please put movie, year, director or score."
     user_input = gets.strip.downcase
     puts "\n"
 
@@ -54,6 +55,13 @@ class CLI
       display_list_of_rt_scores
       ask_user_for_film_choice_rt_score(@sorted_array_by_rt_score)
     end
+
+      list_films
+
+    else
+      puts "Thanks for stopping by!"
+    end
+
   end
 
   def display_list_of_films
