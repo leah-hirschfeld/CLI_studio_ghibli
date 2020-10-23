@@ -68,18 +68,15 @@ class CLI
 
   def display_list_of_years
     sorted_array_by_years = Film.all.sort_by {|film| film.release_date}
-    #Film.all.each_with_index do |film, index|
     sorted_array_by_years.each_with_index do |film, index|
       puts "#{index + 1}. #{film.title}, Release Date: #{film.release_date}"
     end
   end
 
   def display_list_of_rt_scores
-    sorted_array_by_rt_score = Film.all.sort_by {|film| film.title}
+    sorted_array_by_rt_score = Film.all.sort_by {|film| film.rt_score}
     sorted_array_by_rt_score.each_with_index do |film, index|
       puts "#{index + 1}. #{film.title}, Rotten Tomato Score: #{film.rt_score}"
-      #Film.all.sort_by {|film| film.rt_score}
-      #puts "#{index + 1}. #{film.title}, Rotten Tomato Score: #{film.rt_score}"
       end
   end
 
