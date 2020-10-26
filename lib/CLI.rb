@@ -76,9 +76,12 @@ class CLI
   end
 
   def display_list_of_directors
-    Film.all.each_with_index do |film, index|
-      puts "#{index + 1}. #{film.title}, Film Director: #{film.director}"
+    Director.all.each_with_index do |director, index|
+      puts "#{index + 1}. #{director.name}"
     end
+    #Film.all.each_with_index do |film, index|
+      #puts "#{index + 1}. #{film.title}, Film Director: #{film.director}"
+    #end
   end
 
   def display_list_of_years

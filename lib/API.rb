@@ -16,7 +16,7 @@ class API
       counter += 1
       film = Film.new
       film.title = film_hash["title"]
-      film.director = film_hash["director"]
+      film.director = Director.find_or_create_by_name(film_hash["director"])
       film.producer = film_hash["producer"]
       film.release_date = film_hash["release_date"]
       film.description = film_hash["description"]

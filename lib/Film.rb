@@ -12,4 +12,11 @@ class Film
     @@all
   end
 
+  def director=(director)
+    @director = director
+    if !Director.all.include?(self)
+      director.films << self
+    end
+  end
+
 end
