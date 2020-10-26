@@ -31,7 +31,7 @@ class CLI
   end
 
   def list_films
-    puts "What would you like to see? Please put movie, year, director or score."
+    puts "What would you like to see? Please put movie, year, director, score or exit."
     puts "\n"
     user_input = gets.strip.downcase
 
@@ -114,18 +114,6 @@ class CLI
     display_film_details(film_instance)
   end
 
-  def display_film_details(film)
-    puts "\n"
-    puts film.title
-    puts "\n"
-    puts "Description: " + film.description
-    puts "\n"
-    puts "Director: " + film.director.name
-    puts "Producer: " + film.producer
-    puts "Release Date: " + film.release_date
-    puts "Rotten Tomato Score: " + film.rt_score
-  end
-
   def ask_user_for_film_choice_rt_score(array)
     puts "\n"
     puts "Enter the number of the film you'd like to learn more about!"
@@ -172,6 +160,18 @@ class CLI
     director_instance = Director.all[user_input_as_index]
 
     display_film_by_director(director_instance)
+  end
+
+  def display_film_details(film)
+    puts "\n"
+    puts film.title
+    puts "\n"
+    puts "Description: " + film.description
+    puts "\n"
+    puts "Director: " + film.director.name
+    puts "Producer: " + film.producer
+    puts "Release Date: " + film.release_date
+    puts "Rotten Tomato Score: " + film.rt_score
   end
 
   def display_film_by_director(director)
