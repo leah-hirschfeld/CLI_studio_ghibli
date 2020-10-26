@@ -142,18 +142,6 @@ class CLI
     display_film_details(film_instance)
   end
 
-  def display_rt_scores_details(film)
-    puts "\n"
-    puts film.title
-    puts "\n"
-    puts "Description: " + film.description
-    puts "\n"
-    puts "Director: " + film.director.name
-    puts "Producer: " + film.producer
-    puts "Release Date: " + film.release_date
-    puts "Rotten Tomato Score: " + film.rt_score
-  end
-
   def ask_user_for_film_choice_by_year(array)
     puts "\n"
     puts "Enter the number of the film you'd like to learn more about!"
@@ -168,18 +156,6 @@ class CLI
     film_instance = array[user_input_as_index]
 
     display_film_details(film_instance)
-  end
-
-  def display_film_by_year_details(film)
-    puts "\n"
-    puts film.title
-    puts "\n"
-    puts "Description: " + film.description
-    puts "\n"
-    puts "Director: " + film.director.name
-    puts "Producer: " + film.producer
-    puts "Release Date: " + film.release_date
-    puts "Rotten Tomato Score: " + film.rt_score
   end
 
   def ask_user_for_directors_films
