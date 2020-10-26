@@ -1,20 +1,21 @@
 require 'pry'
+
 class CLI
 
   def initialize
   end
 
   def start
-    puts "Welcome to the World of Studio Ghibli!"
+    puts "Welcome to the World of Studio Ghibli!".blue
     puts "\n"
 
     sleep(1)
 
-    puts "  To see a list of Studio Ghibli movies, put 'Movies'."
-    puts "  To see a list of Studio Ghibli directors, put 'Directors'."
-    puts "  To see a list of Studio Ghibli movies by decade, put 'Year'."
-    puts "  To see a list of Studio Ghibli movies by rotten tomato score, put 'Scores'."
-    puts "  To leave, put 'Exit'."
+    puts "  To see a list of Studio Ghibli movies, put " + "Movie.".blueish
+    puts "  To see a list of Studio Ghibli directors, put " + "Directors.".blueish
+    puts "  To see a list of Studio Ghibli movies by decade, put " + "Year.".blueish
+    puts "  To see a list of Studio Ghibli movies by rotten tomato score, put " + "Scores.".blueish
+    puts "  To leave, put " + "Exit.".redish
 
     puts "\n"
 
@@ -31,7 +32,7 @@ class CLI
   end
 
   def list_films
-    puts "What would you like to see? Please put movie, year, director, score or exit."
+    puts "What would you like to see? Please put movie, year, directors, scores or exit."
     puts "\n"
     user_input = gets.strip.downcase
 
@@ -164,20 +165,20 @@ class CLI
 
   def display_film_details(film)
     puts "\n"
-    puts film.title
+    puts film.title.purple
     puts "\n"
-    puts "Description: " + film.description
+    puts "Description: ".purpleish + film.description
     puts "\n"
-    puts "Director: " + film.director.name
-    puts "Producer: " + film.producer
-    puts "Release Date: " + film.release_date
-    puts "Rotten Tomato Score: " + film.rt_score
+    puts "Director: ".purpleish + film.director.name
+    puts "Producer: ".purpleish + film.producer
+    puts "Release Date: ".purpleish + film.release_date
+    puts "Rotten Tomato Score: ".purpleish + film.rt_score
   end
 
   def display_film_by_director(director)
     director.films.each_with_index do |film, index|
     puts "\n"
-    puts "#{index + 1}. " + film.title
+    puts "#{index + 1}. ".purple + film.title.purple
     puts film.description
     end
   end

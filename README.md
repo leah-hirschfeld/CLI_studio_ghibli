@@ -21,4 +21,6 @@ Respond with movie, year, director, score or exit to interact with the CLI!
 Once you've decided which list you'd like to see, simply put in the number of the movie and enjoy!
 
 ~~~License~~~
-Here's the link for the MIT license for this code: https://choosealicense.com/licenses/mit/
+Copyright (c) 2020 Leah Hirschfeld
+
+Released under the MIT license. See LICENSE file for details.

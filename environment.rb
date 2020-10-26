@@ -7,3 +7,4 @@ require_relative './lib/Director.rb'
 require 'pry'
 require 'net/http' #makes requests from API
 require 'json' #parses JSON from API
+require 'awesome_print'
