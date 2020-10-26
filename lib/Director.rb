@@ -1,5 +1,5 @@
 require 'pry'
-class Film
+class Director
   attr_accessor :title, :director, :producer, :rt_score, :release_date, :description
 
   @@all = []
