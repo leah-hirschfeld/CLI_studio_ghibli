@@ -45,7 +45,7 @@ class CLI
       puts "Excellent! Here are the Studio Ghibli directors!"
       puts "\n"
       display_list_of_directors
-      ask_user_for_film_choice_by_director
+      ask_user_for_directors_films
       puts "\n"
     elsif user_input == "year"||user_input == "years"
       puts "Absolutely! Here are the movies by release date!"
@@ -103,7 +103,7 @@ class CLI
     puts "Enter the number of the film you'd like to learn more about!"
     user_input_as_index = gets.strip.to_i - 1
 
-    until user_input_as_index.between?(0, Film.all.length)
+    until user_input_as_index.between?(0, Film.all.length-1)
       puts "Whoops! That didn't work. Choose a valid number please."
       puts "\n"
       user_input_as_index = gets.strip.to_i - 1
@@ -131,7 +131,7 @@ class CLI
     puts "Enter the number of the film you'd like to learn more about!"
     user_input_as_index = gets.strip.to_i - 1
 
-    until user_input_as_index.between?(0, Film.all.length)
+    until user_input_as_index.between?(0, Film.all.length-1)
       puts "Whoops! That didn't work. Choose a valid number please."
       puts "\n"
       user_input_as_index = gets.strip.to_i - 1
@@ -159,7 +159,7 @@ class CLI
     puts "Enter the number of the film you'd like to learn more about!"
     user_input_as_index = gets.strip.to_i - 1
 
-    until user_input_as_index.between?(0, Film.all.length)
+    until user_input_as_index.between?(0, Film.all.length-1)
       puts "Whoops! That didn't work. Choose a valid number please."
       puts "\n"
       user_input_as_index = gets.strip.to_i - 1
@@ -182,32 +182,28 @@ class CLI
     puts "Rotten Tomato Score: " + film.rt_score
   end
 
-  def ask_user_for_film_choice_by_director
+  def ask_user_for_directors_films
     puts "\n"
-    puts "Enter the number of the director you'd like to learn more about!"
+    puts "Enter the number of the director's films you'd like to learn more about!"
     user_input_as_index = gets.strip.to_i - 1
 
-    until user_input_as_index.between?(0, Film.all.length)
+    until user_input_as_index.between?(0, Director.all.length - 1)
       puts "Whoops! That didn't work. Choose a valid number please."
       puts "\n"
       user_input_as_index = gets.strip.to_i - 1
     end
 
-    film_instance = user_input_as_index
+    director_instance = Director.all[user_input_as_index]
 
-    display_film_details(film_instance)
+    display_film_by_director(director_instance)
   end
 
-  def display_film_by_director(film)
+  def display_film_by_director(director)
+    director.films.each_with_index do |film, index|
     puts "\n"
-    puts film.title
-    puts "\n"
-    puts "Description: " + film.description
-    puts "\n"
-    puts "Director: " + film.director
-    puts "Producer: " + film.producer
-    puts "Release Date: " + film.release_date
-    puts "Rotten Tomato Score: " + film.rt_score
+    puts "#{index + 1}. " + film.title
+    puts film.description
+    end
   end
 
 end
