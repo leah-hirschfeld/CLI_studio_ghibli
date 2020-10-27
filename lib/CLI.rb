@@ -13,7 +13,7 @@ class CLI
 
     puts "  To see a list of Studio Ghibli movies, put " + "Movie.".blueish
     puts "  To see a list of Studio Ghibli directors, put " + "Directors.".blueish
-    puts "  To see a list of Studio Ghibli movies by decade, put " + "Year.".blueish
+    puts "  To see a list of Studio Ghibli movies by year, put " + "Year.".blueish
     puts "  To see a list of Studio Ghibli movies by rotten tomato score, put " + "Scores.".blueish
     puts "  To leave, put " + "Exit.".redish
 
