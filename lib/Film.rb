@@ -14,7 +14,7 @@ class Film
 
   def director=(director)
     @director = director
-    if !Director.all.include?(self)
+    if !director.films.include?(self)
       director.films << self
     end
   end

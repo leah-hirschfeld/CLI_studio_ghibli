@@ -2,9 +2,6 @@ require 'pry'
 
 class CLI
 
-  def initialize
-  end
-
   def start
     puts "Welcome to the World of Studio Ghibli!".blue
     puts "\n"
@@ -19,10 +16,10 @@ class CLI
 
     puts "\n"
 
-    API.fetch_films
+    fetch_films
 
     while true
-      output=list_films
+      output = list_films
       if output == 'exit'
           puts "Thanks for stopping by!"
           break
