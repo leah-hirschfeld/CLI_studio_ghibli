@@ -31,8 +31,4 @@ class Director
     find_by_name(name) || create(name)
   end
 
-  def titles
-    self.films.collect{|film| film.title}
-  end
-
 end
